@@ -9,7 +9,9 @@ import me.elrevin.onboarding_presentation.screen.WelcomeScreen
 fun NavGraphBuilder.OnboardingNavGraph(navController: NavController) {
     navigation(route = "onboarding", startDestination = "welcome") {
         composable("welcome") {
-            WelcomeScreen()
+            WelcomeScreen(
+                onStartCooking = {}
+            )
         }
     }
 }

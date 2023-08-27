@@ -32,7 +32,7 @@ fun WelcomeScreen(
             painter = painterResource(id = R.drawable.onboarding_background),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.FillBounds,
+            contentScale = ContentScale.FillHeight,
             alignment = Alignment.Center
         )
         Column(
