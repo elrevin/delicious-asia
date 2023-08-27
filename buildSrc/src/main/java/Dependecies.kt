@@ -5,6 +5,7 @@ class Dependecies {
         const val ui = "androidx.compose.ui:ui"
         const val graphics = "androidx.compose.ui:ui-graphics"
         const val material = "androidx.compose.material3:material3"
+        const val navigation = "androidx.navigation:navigation-compose:2.7.1"
         const val tooling = "androidx.compose.ui:ui-tooling"
         const val preview = "androidx.compose.ui:ui-tooling-preview"
     }
@@ -23,6 +24,7 @@ class Dependecies {
         private const val coreVersion = "1.10.1"
 
         const val core = "androidx.core:core-ktx:$coreVersion"
+        const val appcompat = "androidx.appcompat:appcompat:1.6.1"
     }
 
     object Hilt {
@@ -33,5 +35,12 @@ class Dependecies {
         const val kapt = "com.google.dagger:hilt-android-compiler:$version"
         const val navigation = "androidx.hilt:hilt-navigation-compose:$navigationVersion"
     }
+
+    object Coil {
+        const val version = "2.4.0"
+
+        const val compose = "io.coil-kt:coil-compose:$version"
+    }
+
 
 }

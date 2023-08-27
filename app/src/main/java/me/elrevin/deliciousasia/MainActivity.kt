@@ -10,7 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import me.elrevin.deliciousasia.ui.theme.DeliciousAsiaTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import me.elrevin.core_ui.theme.DeliciousAsiaTheme
+import me.elrevin.onboarding_presentation.navigation.OnboardingNavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,25 +25,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "onboarding") {
+                        OnboardingNavGraph(navController = navController)
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DeliciousAsiaTheme {
-        Greeting("Android")
     }
 }

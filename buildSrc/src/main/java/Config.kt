@@ -1,4 +1,5 @@
 object Config {
+    fun namespace(module: String) = "me.elrevin.${module}"
     const val packageName = "me.elrevin.deliciousasia"
 
     const val compileSdk = 34

@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "DeliciousAsia"
 include(":app")
+include(":onboarding")
+include(":onboarding:onboarding_presentation")
+include(":core_ui")
