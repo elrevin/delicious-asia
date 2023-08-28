@@ -21,7 +21,7 @@ object AppTypography {
         lineHeight = 68.sp
     )
 
-    val H4Bold = TextStyle(
+    val h4Bold = TextStyle(
         fontFamily = appFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,

@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":core"))
     implementation(project(":core_ui"))
 
     implementation(Dependecies.Other.core)
