@@ -1,0 +1,12 @@
+mutation RegisterUser($lang: String!, $name: String! $login: String!, $password: String!) {
+    registerUser(name: $name, login: $login, password: $password, lang: $lang) {
+        ...on UserData {
+            name
+            token
+        }
+
+        ...on Error {
+            errorMessage
+        }
+    }
+}

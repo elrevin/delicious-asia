@@ -9,12 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import me.elrevin.core.navigation.Routes
 import me.elrevin.core_ui.theme.AppTheme
 import me.elrevin.core_ui.theme.DeliciousAsiaTheme
-import me.elrevin.home_screen_presentation.navigation.homeScreenNavigation
 import me.elrevin.onboarding_presentation.navigation.onboardingNavGraph
+import me.elrevin.view_recipes_presentation.navigation.viewRecipesNavigation
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             DeliciousAsiaTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = AppTheme.colors.surface
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = Routes.onboardingRoot) {
                         onboardingNavGraph(navController = navController)
-                        homeScreenNavigation(navController = navController)
+                        viewRecipesNavigation(navController = navController)
                     }
                 }
             }

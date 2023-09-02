@@ -1,0 +1,12 @@
+mutation Auth($lang: String!, $login: String!, $password: String!) {
+    auth(login: $login, password: $password, lang: $lang) {
+        ...on UserData {
+            name
+            token
+        }
+
+        ...on Error {
+            errorMessage
+        }
+    }
+}

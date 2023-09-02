@@ -11,14 +11,19 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/api_schema" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core_ui" />
-            <option value="$PROJECT_DIR$/feature_home_screen" />
-            <option value="$PROJECT_DIR$/feature_home_screen/home_screen_presentation" />
             <option value="$PROJECT_DIR$/feature_onboarding" />
             <option value="$PROJECT_DIR$/feature_onboarding/onboarding_presentation" />
+            <option value="$PROJECT_DIR$/feature_user_account" />
+            <option value="$PROJECT_DIR$/feature_user_account/user_account_data" />
+            <option value="$PROJECT_DIR$/feature_user_account/user_account_domain" />
+            <option value="$PROJECT_DIR$/feature_view_recipes" />
+            <option value="$PROJECT_DIR$/feature_view_recipes/view_recipes_data" />
+            <option value="$PROJECT_DIR$/feature_view_recipes/view_recipes_presentation" />
           </set>
         </option>
       </GradleProjectSettings>

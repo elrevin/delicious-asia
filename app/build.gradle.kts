@@ -59,7 +59,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":core_ui"))
     implementation(project(":feature_onboarding:onboarding_presentation"))
-    implementation(project(":feature_home_screen:home_screen_presentation"))
+    implementation(project(":feature_view_recipes:view_recipes_presentation"))
 
     implementation(Dependecies.Other.core)
 

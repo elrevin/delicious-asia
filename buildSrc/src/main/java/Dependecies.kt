@@ -42,5 +42,9 @@ class Dependecies {
         const val compose = "io.coil-kt:coil-compose:$version"
     }
 
+    object Apollo {
+        private const val version = "3.8.2"
+        const val runtime = "com.apollographql.apollo3:apollo-runtime:${version}"
+    }
 
 }
