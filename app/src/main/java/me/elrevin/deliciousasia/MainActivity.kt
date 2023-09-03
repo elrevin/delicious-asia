@@ -10,7 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import me.elrevin.core.navigation.Routes
+import me.elrevin.core.Routes
 import me.elrevin.core_ui.theme.AppTheme
 import me.elrevin.core_ui.theme.DeliciousAsiaTheme
 import me.elrevin.onboarding_presentation.navigation.onboardingNavGraph

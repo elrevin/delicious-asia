@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import me.elrevin.core.navigation.Routes
+import me.elrevin.core.Routes
 import me.elrevin.onboarding_presentation.screen.WelcomeScreen
 
 fun NavGraphBuilder.onboardingNavGraph(navController: NavController) {
