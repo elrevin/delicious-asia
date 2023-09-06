@@ -1,10 +1,17 @@
 package me.elrevin.user_account_domain.repository
 
-import kotlinx.coroutines.flow.Flow
+import me.elrevin.core.Either
 import me.elrevin.user_account_domain.entity.User
 
 interface UserRepository {
+
+    /**
+     * Get user data from shared preferences
+     */
     fun getUser(): User?
 
-    suspend fun loadUserData(): Flow<User>
+    /**
+     * Check user data in shared preferences, refresh it from server
+     */
+    suspend fun loadUserData(): Either<User?>
 }

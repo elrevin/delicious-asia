@@ -2,6 +2,7 @@ package me.elrevin.user_account_data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import me.elrevin.core.Either
 import me.elrevin.user_account_data.entity.UserEntity
 import me.elrevin.user_account_data.local.UserAccountLocalDs
 import me.elrevin.user_account_data.mapper.toUser
@@ -13,19 +14,24 @@ class UserRepositoryImpl (
     private val api: UserAccountApi,
     private val localDs: UserAccountLocalDs
 ) : UserRepository {
-    private val user: UserEntity? = localDs.getUser()
+    private val user: UserEntity?
+        get() = localDs.getUser()
 
     override fun getUser(): User? = user?.toUser()
 
-    override suspend fun loadUserData(): Flow<User> {
+    override suspend fun loadUserData(): Either<User?> {
         if (user != null) {
-            return flow {
-                emit(user.toUser())
-            }
-        }
+            val res = api.loadUserData(user?.token ?: "")
 
-        return flow {
-            val result = api.loadUserData("")
+            if (res.isSuccess()) {
+                if (res.getValue() != null) {
+                    localDs.saveUser(res.getValue()!!)
+                }
+                return Either.success(res.getValue()?.toUser())
+            }
+            return Either.fromEither(res)
+        } else {
+            return Either.success(null)
         }
     }
 }

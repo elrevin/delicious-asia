@@ -4,4 +4,6 @@ import me.elrevin.user_account_data.entity.UserEntity
 
 interface UserAccountLocalDs {
     fun getUser(): UserEntity?
+
+    fun saveUser(userEntity: UserEntity)
 }

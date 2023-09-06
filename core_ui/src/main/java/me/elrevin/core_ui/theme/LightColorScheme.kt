@@ -28,6 +28,12 @@ fun lightAppColorScheme() = AppColorScheme(
     fieldFocusedText = Neutral90,
     fieldFocusedIcon = Neutral20,
 
+    fieldDisabledBg = Neutral10,
+    fieldDisabledStroke = Neutral30,
+    fieldDisabledPlaceholder = Neutral30,
+    fieldDisabledText = Neutral30,
+    fieldDisabledIcon = Neutral30,
+
     background = White,
     surface = White,
     onBackground = Neutral90,

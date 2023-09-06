@@ -1,6 +1,7 @@
 package me.elrevin.user_account_data.local
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import me.elrevin.user_account_data.entity.UserEntity
 
 class UserAccountLocalDsImpl(
@@ -18,4 +19,12 @@ class UserAccountLocalDsImpl(
                 token = sharedPreferences.getString("userToken", "")!!
             )
         else null
+
+    override fun saveUser(userEntity: UserEntity) {
+        sharedPreferences.edit {
+            putString("userName", userEntity.name)
+            putString("userToken", userEntity.token)
+            commit()
+        }
+    }
 }

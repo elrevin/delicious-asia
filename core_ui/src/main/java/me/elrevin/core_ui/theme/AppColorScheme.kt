@@ -32,6 +32,12 @@ data class AppColorScheme(
     val fieldFocusedText: Color,
     val fieldFocusedIcon: Color,
 
+    val fieldDisabledBg: Color,
+    val fieldDisabledStroke: Color,
+    val fieldDisabledPlaceholder: Color,
+    val fieldDisabledText: Color,
+    val fieldDisabledIcon: Color,
+
     val background: Color,
     val surface: Color,
     val onBackground: Color,
@@ -69,6 +75,12 @@ val localAppColors = staticCompositionLocalOf {
         fieldFocusedPlaceholder = Color.Unspecified,
         fieldFocusedText = Color.Unspecified,
         fieldFocusedIcon = Color.Unspecified,
+
+        fieldDisabledBg = Color.Unspecified,
+        fieldDisabledStroke = Color.Unspecified,
+        fieldDisabledPlaceholder = Color.Unspecified,
+        fieldDisabledText = Color.Unspecified,
+        fieldDisabledIcon = Color.Unspecified,
 
         background = Color.Unspecified,
         surface = Color.Unspecified,

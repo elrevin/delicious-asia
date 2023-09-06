@@ -1,5 +1,7 @@
 package me.elrevin.core_ui.theme
 
+import androidx.compose.ui.graphics.Color
+
 fun darkAppColorScheme() = AppColorScheme(
     buttonPrimaryBg = Red50,
     buttonPrimaryText = White,
@@ -27,6 +29,12 @@ fun darkAppColorScheme() = AppColorScheme(
     fieldFocusedPlaceholder = Neutral60,
     fieldFocusedText = Neutral30,
     fieldFocusedIcon = Neutral60,
+
+    fieldDisabledBg = Neutral90,
+    fieldDisabledStroke = Neutral80,
+    fieldDisabledPlaceholder = Neutral80,
+    fieldDisabledText = Neutral80,
+    fieldDisabledIcon = Neutral80,
 
     background = Neutral90,
     surface = Neutral90,

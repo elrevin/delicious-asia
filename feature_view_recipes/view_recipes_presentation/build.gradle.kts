@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id(Config.hiltPlugin)
+    kotlin("kapt")
 }
 
 android {
@@ -52,6 +54,10 @@ dependencies {
     implementation(Dependecies.Compose.navigation)
     implementation(Dependecies.Compose.material)
     implementation(Dependecies.Coil.compose)
+
+    implementation(Dependecies.Hilt.hilt)
+    implementation(Dependecies.Hilt.navigation)
+    kapt(Dependecies.Hilt.kapt)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

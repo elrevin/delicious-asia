@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_exception">Что-то случилось, пока не не понятно что.</string>
+</resources>

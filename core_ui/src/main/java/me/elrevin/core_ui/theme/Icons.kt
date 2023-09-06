@@ -8,5 +8,5 @@ import me.elrevin.core_ui.R
 object Icons {
     val arrowRight: Painter
         @Composable
-        get() = painterResource(id = R.drawable.arrow_right)
+        get() = painterResource(id = R.drawable.ic_arrow_right)
 }

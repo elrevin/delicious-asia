@@ -41,4 +41,18 @@ object AppTypography {
         fontSize = 16.sp,
         lineHeight = 16.sp
     )
+
+    val label = TextStyle(
+        fontFamily = appFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 14.sp
+    )
+
+    val labelBold = TextStyle(
+        fontFamily = appFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        lineHeight = 14.sp
+    )
 }

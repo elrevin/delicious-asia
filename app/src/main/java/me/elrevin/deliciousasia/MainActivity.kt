@@ -14,6 +14,7 @@ import me.elrevin.core.Routes
 import me.elrevin.core_ui.theme.AppTheme
 import me.elrevin.core_ui.theme.DeliciousAsiaTheme
 import me.elrevin.onboarding_presentation.navigation.onboardingNavGraph
+import me.elrevin.user_account_presentation.navigation.userAccountNavigation
 import me.elrevin.view_recipes_presentation.navigation.viewRecipesNavigation
 
 @AndroidEntryPoint
@@ -31,6 +32,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = Routes.onboardingRoot) {
                         onboardingNavGraph(navController = navController)
+                        userAccountNavigation(navController = navController)
                         viewRecipesNavigation(navController = navController)
                     }
                 }

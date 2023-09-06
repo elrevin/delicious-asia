@@ -56,10 +56,13 @@ android {
 
 dependencies {
 
-    implementation(project(":core"))
-    implementation(project(":core_ui"))
-    implementation(project(":feature_onboarding:onboarding_presentation"))
-    implementation(project(":feature_view_recipes:view_recipes_presentation"))
+    implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
+    implementation(project(Modules.Onboarding.presentation))
+    implementation(project(Modules.UserAccount.data))
+    implementation(project(Modules.UserAccount.domain))
+    implementation(project(Modules.UserAccount.presentation))
+    implementation(project(Modules.Recipes.presentation))
 
     implementation(Dependecies.Other.core)
 

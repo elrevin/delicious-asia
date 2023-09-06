@@ -1,17 +1,18 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id (Config.hiltPlugin)
+    kotlin("kapt")
 }
 
 android {
-    namespace = "me.elrevin.user_account_domain"
-    compileSdk = 33
+    namespace = Config.namespace("user_account_domain")
+    compileSdk = Config.compileSdk
 
     defaultConfig {
-        minSdk = 26
+        minSdk = Config.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -24,18 +25,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    kotlin {
+        jvmToolchain(17)
     }
 }
 
 dependencies {
+    implementation(project(":core"))
+
     implementation(Dependecies.Other.core)
     implementation(Dependecies.Other.appcompat)
-    implementation(Dependecies.Apollo.runtime)
+
+    implementation(Dependecies.Hilt.hilt)
+    kapt(Dependecies.Hilt.kapt)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
