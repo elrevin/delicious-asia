@@ -9,8 +9,6 @@ class UserAccountLocalDsImpl(
 ) : UserAccountLocalDs {
     override fun getUser(): UserEntity? =
         if (
-            sharedPreferences.contains("userName") &&
-            sharedPreferences.contains("userToken") &&
             sharedPreferences.getString("userName", "")!!.isNotEmpty() &&
             sharedPreferences.getString("userToken", "")!!.isNotEmpty()
         )
@@ -27,4 +25,13 @@ class UserAccountLocalDsImpl(
             commit()
         }
     }
+
+    override fun skipAuthorization() {
+        sharedPreferences.edit {
+            putBoolean("skipAuthorization", true)
+            commit()
+        }
+    }
+
+    override fun authorizationSkipped(): Boolean = sharedPreferences.getBoolean("skipAuthorization", false)
 }

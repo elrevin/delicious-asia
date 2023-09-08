@@ -6,4 +6,8 @@ interface UserAccountLocalDs {
     fun getUser(): UserEntity?
 
     fun saveUser(userEntity: UserEntity)
+
+    fun skipAuthorization()
+
+    fun authorizationSkipped(): Boolean
 }

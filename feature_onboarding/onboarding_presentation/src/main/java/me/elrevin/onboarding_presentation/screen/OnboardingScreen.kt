@@ -1,7 +1,11 @@
 package me.elrevin.onboarding_presentation.screen
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,48 +18,59 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.coroutines.delay
+import me.elrevin.core_ui.R
 import me.elrevin.core_ui.theme.AppTheme
+import me.elrevin.core_ui.theme.Neutral60
 import me.elrevin.core_ui.theme.White
-import me.elrevin.core_ui.ui.AppPrimaryTextIconButton
-import me.elrevin.onboarding_presentation.viewmodel.OnboardingClassState
 import me.elrevin.onboarding_presentation.viewmodel.OnboardingScreenVm
-import me.elrevin.core_ui.R as CoreUiRes
 
 
 @Composable
 fun OnboardingScreen(
     onStartCooking: () -> Unit,
     onLogin: () -> Unit,
-    vm: OnboardingScreenVm = hiltViewModel<OnboardingScreenVm>()
+    vm: OnboardingScreenVm = hiltViewModel()
 ) {
     val state = vm.state
 
+    LaunchedEffect(key1 = state.authorizedOrSkipped, block = {
+        if (state.authorizedOrSkipped) {
+            delay(700)
+            onStartCooking()
+        }
+    })
+
+    LaunchedEffect(key1 = state.unAuthorized, block = {
+        if (state.unAuthorized) {
+            onLogin()
+        }
+    })
+
     val spaceHeight by animateDpAsState(
-        targetValue = if (state is OnboardingClassState.LoadingIsSuccessful)
-            72.dp
+        targetValue = if (state.unAuthorized)
+            54.dp
         else
             296.dp,
         finishedListener = {
-            if ((state as OnboardingClassState.LoadingIsSuccessful).userAuthorizedOrSkipped) {
-                onStartCooking()
-            } else {
-                onLogin()
-            }
+            onLogin()
         }, label = "",
         animationSpec = tween(1000)
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = CoreUiRes.drawable.onboarding_background),
+            painter = painterResource(id = R.drawable.onboarding_background),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillHeight,
@@ -73,21 +88,34 @@ fun OnboardingScreen(
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "Find the best recipes from\nthe Central Asian nations",
-                style = AppTheme.typography.body,
-                color = White,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
+
+            AnimatedContent(
+                targetState =
+                if (spaceHeight < 150.dp)
+                    "The app maybe more useful \nif you are logged in:"
+                else
+                    "Find the best recipes from\nthe Central Asian nations",
+                transitionSpec = {
+                    fadeIn().togetherWith(fadeOut())
+                }, label = ""
+            ) {
+                Text(
+                    text = it,
+                    style = AppTheme.typography.body,
+                    color = White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+            }
 
             Spacer(modifier = Modifier.height(100.dp))
 
-            if (state is OnboardingClassState.Loading) {
+            if (state.loading) {
                 CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(32.dp)
+                    modifier = Modifier.size(32.dp),
+                    color = Neutral60,
+                    trackColor = Color.Transparent
                 )
             }
 

@@ -9,4 +9,13 @@ object Icons {
     val arrowRight: Painter
         @Composable
         get() = painterResource(id = R.drawable.ic_arrow_right)
+    val user: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_user)
+    val key: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_key)
+    val badge: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_user_badge)
 }

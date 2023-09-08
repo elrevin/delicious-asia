@@ -14,4 +14,10 @@ interface UserRepository {
      * Check user data in shared preferences, refresh it from server
      */
     suspend fun loadUserData(): Either<User?>
+
+    suspend fun auth(login: String, password: String): Either<User?>
+
+    suspend fun register(name: String, login: String, password: String): Either<User?>
+
+    fun skipAuthorization()
 }

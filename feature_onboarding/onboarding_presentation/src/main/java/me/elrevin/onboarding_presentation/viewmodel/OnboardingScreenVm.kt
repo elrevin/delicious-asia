@@ -10,32 +10,37 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.elrevin.core.Either
-import me.elrevin.core_ui.R as CoreUiRes
 import me.elrevin.user_account_domain.UserAccountUseCases
 import me.elrevin.user_account_domain.entity.User
 import javax.inject.Inject
+import me.elrevin.core_ui.R as CoreUiRes
 
 @HiltViewModel
 class OnboardingScreenVm  @Inject constructor(
     private val userAccountUseCases: UserAccountUseCases
 ): ViewModel() {
-    var state: OnboardingClassState by mutableStateOf(OnboardingClassState.Default)
+    var state: OnboardingClassState by mutableStateOf(OnboardingClassState())
         private set
 
     init {
         viewModelScope.launch {
-            state = OnboardingClassState.Loading
+            state = state.copy(loading = true)
             val result = loadUserData()
+            state = state.copy(loading = false)
             if (result.isSuccess()) {
-                state = OnboardingClassState.LoadingIsSuccessful(result.getValue() != null)
+                state = if (result.getValue() == null) {
+                    state.copy(unAuthorized = true)
+                } else {
+                    state.copy(authorizedOrSkipped = true)
+                }
             }
 
             if (result.isFailure()) {
-                state = OnboardingClassState.Failure(result.getFailureMessageOrNull()!!)
+                state = state.copy(errorStr = result.getFailureMessageOrNull()!!)
             }
 
             if (result.isException()) {
-                state = OnboardingClassState.Failure(CoreUiRes.string.api_exception)
+                state = state.copy(errorId = CoreUiRes.string.api_exception)
             }
         }
     }
@@ -45,18 +50,10 @@ class OnboardingScreenVm  @Inject constructor(
     }
 }
 
-sealed class OnboardingClassState{
-    object Default: OnboardingClassState()
-    object Loading: OnboardingClassState()
-    class Failure(val message: String? = null): OnboardingClassState() {
-
-        var messageRes: Int? = null
-            private set
-
-        constructor(messageRes: Int) : this() {
-            this.messageRes = messageRes
-        }
-    }
-
-    class LoadingIsSuccessful(val userAuthorizedOrSkipped: Boolean): OnboardingClassState()
-}
+data class OnboardingClassState (
+    val loading: Boolean = false,
+    val errorId: Int? = null,
+    val errorStr: String = "",
+    val authorizedOrSkipped: Boolean = false,
+    val unAuthorized: Boolean = false,
+)

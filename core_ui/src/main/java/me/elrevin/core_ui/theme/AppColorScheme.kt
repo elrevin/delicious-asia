@@ -10,14 +10,18 @@ data class AppColorScheme(
     val buttonSecondaryBg: Color,
     val buttonSecondaryStroke: Color,
     val buttonSecondaryText: Color,
-    val buttonTextText: Color,
 
     val buttonPrimaryPressedBg: Color,
     val buttonPrimaryPressedText: Color,
     val buttonSecondaryPressedBg: Color,
     val buttonSecondaryPressedStroke: Color,
     val buttonSecondaryPressedText: Color,
-    val buttonTextPressedText: Color,
+
+    val buttonPrimaryDisabledBg: Color,
+    val buttonPrimaryDisabledText: Color,
+    val buttonSecondaryDisabledBg: Color,
+    val buttonSecondaryDisabledStroke: Color,
+    val buttonSecondaryDisabledText: Color,
 
     // Fields
     val fieldDefaultBg: Color,
@@ -54,14 +58,18 @@ val localAppColors = staticCompositionLocalOf {
         buttonSecondaryBg = Color.Unspecified,
         buttonSecondaryStroke = Color.Unspecified,
         buttonSecondaryText = Color.Unspecified,
-        buttonTextText = Color.Unspecified,
 
         buttonPrimaryPressedBg = Color.Unspecified,
         buttonPrimaryPressedText = Color.Unspecified,
         buttonSecondaryPressedBg = Color.Unspecified,
         buttonSecondaryPressedStroke = Color.Unspecified,
         buttonSecondaryPressedText = Color.Unspecified,
-        buttonTextPressedText = Color.Unspecified,
+
+        buttonPrimaryDisabledBg = Color.Unspecified,
+        buttonPrimaryDisabledText = Color.Unspecified,
+        buttonSecondaryDisabledBg = Color.Unspecified,
+        buttonSecondaryDisabledStroke = Color.Unspecified,
+        buttonSecondaryDisabledText = Color.Unspecified,
 
         // Fields
         fieldDefaultBg = Color.Unspecified,

@@ -1,19 +1,25 @@
 package me.elrevin.core_ui.theme
 
+import androidx.compose.ui.graphics.Color
+
 fun lightAppColorScheme() = AppColorScheme(
     buttonPrimaryBg = Red50,
     buttonPrimaryText = White,
-    buttonSecondaryBg = White,
+    buttonSecondaryBg = Color.Transparent,
     buttonSecondaryStroke = Red50,
     buttonSecondaryText = Red50,
-    buttonTextText = Red50,
 
     buttonPrimaryPressedBg = Red80,
     buttonPrimaryPressedText = White,
     buttonSecondaryPressedBg = Neutral10,
     buttonSecondaryPressedStroke = Red80,
     buttonSecondaryPressedText = Red80,
-    buttonTextPressedText = Red80,
+
+    buttonPrimaryDisabledBg = Neutral20,
+    buttonPrimaryDisabledText = Neutral50,
+    buttonSecondaryDisabledBg = Color.Transparent,
+    buttonSecondaryDisabledStroke = Neutral20,
+    buttonSecondaryDisabledText = Neutral50,
 
     // Fields
     fieldDefaultBg = White,

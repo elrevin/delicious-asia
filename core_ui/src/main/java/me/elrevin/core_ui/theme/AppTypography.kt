@@ -18,7 +18,7 @@ object AppTypography {
         fontFamily = appFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 56.sp,
-        lineHeight = 68.sp
+        lineHeight = 56.sp
     )
 
     val h4Bold = TextStyle(
@@ -32,7 +32,7 @@ object AppTypography {
         fontFamily = appFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 16.sp
+        lineHeight = 20.sp
     )
 
     val bodyBold = TextStyle(

@@ -8,14 +8,18 @@ fun darkAppColorScheme() = AppColorScheme(
     buttonSecondaryBg = Neutral60,
     buttonSecondaryStroke = Red0,
     buttonSecondaryText = Red0,
-    buttonTextText = Red50,
 
     buttonPrimaryPressedBg = Red80,
     buttonPrimaryPressedText = White,
     buttonSecondaryPressedBg = Neutral80,
     buttonSecondaryPressedStroke = Red0,
     buttonSecondaryPressedText = Red0,
-    buttonTextPressedText = Red80,
+
+    buttonPrimaryDisabledBg = Neutral80,
+    buttonPrimaryDisabledText = Neutral70,
+    buttonSecondaryDisabledBg = Color.Transparent,
+    buttonSecondaryDisabledStroke = Neutral70,
+    buttonSecondaryDisabledText = Neutral80,
 
     // Fields
     fieldDefaultBg = Neutral100,

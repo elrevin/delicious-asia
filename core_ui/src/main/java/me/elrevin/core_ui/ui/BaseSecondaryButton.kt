@@ -1,5 +1,7 @@
 package me.elrevin.core_ui.ui
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,21 +20,30 @@ import androidx.compose.ui.unit.dp
 import me.elrevin.core_ui.theme.AppTheme
 
 @Composable
-fun BasePrimaryButton(
+fun BaseSecondaryButton(
     modifier: Modifier,
     text: String? = null,
     iconPainter: Painter? = null,
     contentPadding: PaddingValues,
     textStyle: TextStyle,
+    enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
+    val borderColor = if (enabled) {
+        AppTheme.colors.buttonSecondaryStroke
+    } else {
+        AppTheme.colors.buttonSecondaryDisabledStroke
+    }
+
     Button(
-        modifier = modifier,
+        border = BorderStroke(1.dp, borderColor),
         onClick = onClick,
         shape = AppTheme.shapes.medium,
         colors = ButtonDefaults.buttonColors(
-            containerColor = AppTheme.colors.buttonPrimaryBg,
-            contentColor = AppTheme.colors.buttonPrimaryText
+            containerColor = AppTheme.colors.buttonSecondaryBg,
+            contentColor = AppTheme.colors.buttonSecondaryText,
+            disabledContainerColor = AppTheme.colors.buttonSecondaryDisabledBg,
+            disabledContentColor = AppTheme.colors.buttonSecondaryDisabledText
         ),
         contentPadding = contentPadding
     ) {

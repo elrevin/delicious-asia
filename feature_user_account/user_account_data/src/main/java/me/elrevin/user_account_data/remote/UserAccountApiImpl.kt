@@ -42,7 +42,7 @@ class UserAccountApiImpl @Inject constructor(
         name: String,
         login: String,
         password: String
-    ): Either<UserEntity> =
+    ): Either<UserEntity?> =
         doRegisterUser(RegisterUserMutation(getLanguage(), name, login, password))
 
     suspend fun doLoadUserData(query: Query<UserDataQuery.Data>): Either<UserEntity?> {
@@ -69,7 +69,7 @@ class UserAccountApiImpl @Inject constructor(
     override suspend fun loadUserData(token: String): Either<UserEntity?> =
         doLoadUserData(UserDataQuery(token))
 
-    suspend fun doAuthUser(mutation: Mutation<AuthMutation.Data>): Either<UserEntity> {
+    suspend fun doAuthUser(mutation: Mutation<AuthMutation.Data>): Either<UserEntity?> {
         try {
             val response = apolloClient.mutation(
                 mutation
@@ -91,7 +91,7 @@ class UserAccountApiImpl @Inject constructor(
         }
     }
 
-    override suspend fun authUser(login: String, password: String): Either<UserEntity> =
+    override suspend fun authUser(login: String, password: String): Either<UserEntity?> =
         doAuthUser(AuthMutation(getLanguage(), login, password))
 
 }

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="api_exception">Something wrong :(</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="start_cooking">Start cooking</string>
+    <string name="skip">Skip</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="sign_in">Login</string>
 </resources>

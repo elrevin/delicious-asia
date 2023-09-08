@@ -8,8 +8,8 @@ import me.elrevin.core.Routes
 import me.elrevin.view_recipes_presentation.screen.HomeScreen
 
 fun NavGraphBuilder.viewRecipesNavigation(navController: NavController) {
-    navigation(route = Routes.homeScreenRoot, startDestination = Routes.homeScreen) {
-        composable(Routes.homeScreen) {
+    navigation(route = Routes.homeScreenRoot.path, startDestination = Routes.homeScreen.path) {
+        composable(Routes.homeScreen.path) {
             HomeScreen()
         }
     }
