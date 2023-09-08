@@ -11,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,11 +31,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import me.elrevin.core_ui.R
+import me.elrevin.core_ui.R as CoreUiRes
 import me.elrevin.core_ui.theme.AppTheme
 import me.elrevin.core_ui.theme.Neutral60
 import me.elrevin.core_ui.theme.White
@@ -72,7 +69,7 @@ fun RegisterScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.onboarding_background),
+            painter = painterResource(id = CoreUiRes.drawable.onboarding_background),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillHeight,
@@ -104,7 +101,7 @@ fun RegisterScreen(
             AppTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.name,
-                label = stringResource(id = R.string.name),
+                label = stringResource(id = CoreUiRes.string.name),
                 prefixIconPainter = AppTheme.icons.badge,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                 keyboardActions = KeyboardActions(
@@ -120,7 +117,7 @@ fun RegisterScreen(
             AppTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.login,
-                label = stringResource(id = R.string.login),
+                label = stringResource(id = CoreUiRes.string.login),
                 prefixIconPainter = AppTheme.icons.user,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                 keyboardActions = KeyboardActions(
@@ -136,7 +133,7 @@ fun RegisterScreen(
             AppTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.password,
-                label = stringResource(id = R.string.password),
+                label = stringResource(id = CoreUiRes.string.password),
                 visualTransformation = PasswordVisualTransformation(),
                 prefixIconPainter = AppTheme.icons.key,
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -187,7 +184,7 @@ fun RegisterScreen(
 
             AppPrimaryLargeButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(id = R.string.create_an_account),
+                text = stringResource(id = CoreUiRes.string.create_an_account),
                 iconPainter = AppTheme.icons.arrowRight,
                 onClick = { vm.onEvent(RegisterScreenEvent.OnRegisterButtonClick) }
             )
@@ -199,14 +196,14 @@ fun RegisterScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 AppSecondarySmallButton(
-                    text = stringResource(id = R.string.skip),
+                    text = stringResource(id = CoreUiRes.string.skip),
                     onClick = {
                         vm.onEvent(RegisterScreenEvent.OnSkipButtonClick)
                     }
                 )
 
                 AppSecondarySmallButton(
-                    text = stringResource(id = R.string.sign_in),
+                    text = stringResource(id = CoreUiRes.string.sign_in),
                     onClick = { onAuth() }
                 )
             }

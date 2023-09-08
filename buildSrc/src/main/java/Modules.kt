@@ -2,6 +2,7 @@ object Modules {
     const val app = ":app"
     const val core = ":core"
     const val coreUi = ":core_ui"
+    const val apiSchema = ":api_schema"
     object Onboarding {
         const val presentation = ":feature_onboarding:onboarding_presentation"
     }
@@ -11,8 +12,8 @@ object Modules {
         const val domain = ":feature_user_account:user_account_domain"
     }
     object Recipes {
-        const val presentation = ":feature_view_recipes:view_recipes_presentation"
-        const val data = ":feature_view_recipes:view_recipes_data"
-        const val domain = ":feature_view_recipes:view_recipes_domain"
+        const val presentation = ":feature_recipes:recipes_presentation"
+        const val data = ":feature_recipes:recipes_data"
+        const val domain = ":feature_recipes:recipes_domain"
     }
 }

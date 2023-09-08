@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = Config.namespace("user_account_domain")
+    namespace = Config.namespace("recipes_domain")
     compileSdk = Config.compileSdk
 
     defaultConfig {

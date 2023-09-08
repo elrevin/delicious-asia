@@ -42,10 +42,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":feature_user_account:user_account_domain"))
-    implementation(project(":api_schema"))
-    apolloMetadata(project(":api_schema"))
+    implementation(project(Modules.core))
+    implementation(project(Modules.UserAccount.domain))
+    implementation(project(Modules.apiSchema))
+    apolloMetadata(project(Modules.apiSchema))
 
     implementation(Dependecies.Other.core)
     implementation(Dependecies.Other.appcompat)
