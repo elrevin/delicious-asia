@@ -49,8 +49,7 @@ class RegisterScreenVM @Inject constructor(
             withContext(Dispatchers.IO) {
                 state = state.copy(
                     progressVisible = true,
-                    error = null,
-                    errorStr = ""
+                    error = null
                 )
                 val res = useCases.register(state.name, state.login, state.password)
                 state = state.copy(progressVisible = false)
@@ -59,7 +58,7 @@ class RegisterScreenVM @Inject constructor(
                     res.isSuccess() -> {
                         state = state.copy(registerSuccessful = true)
                     }
-                    res.isFailure() -> state = state.copy(errorStr = res.getFailureMessageOrNull()!!)
+                    res.isFailure() -> state = state.copy(error = res.getFailureCodeOrNull()!!)
                     res.isException() -> state =
                         state.copy(error = CoreUiRes.string.api_exception)
                 }

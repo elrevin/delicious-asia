@@ -1,0 +1,5 @@
+query GetCategories($lang: String!) {
+    categories(lang: $lang, notEmpty: true) {
+        ...CategoryFragment
+    }
+}

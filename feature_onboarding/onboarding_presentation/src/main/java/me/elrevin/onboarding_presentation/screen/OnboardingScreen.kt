@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -82,7 +83,7 @@ fun OnboardingScreen(
         ) {
             Spacer(modifier = Modifier.height(spaceHeight))
             Text(
-                text = "Delicious\nAsia",
+                text = stringResource(id = R.string.delicious_asia),
                 style = AppTheme.typography.head,
                 color = White,
                 textAlign = TextAlign.Center,
@@ -92,9 +93,9 @@ fun OnboardingScreen(
             AnimatedContent(
                 targetState =
                 if (spaceHeight < 150.dp)
-                    "The app maybe more useful \nif you are logged in:"
+                    stringResource(id = R.string.app_maybe_more_useful)
                 else
-                    "Find the best recipes from\nthe Central Asian nations",
+                    stringResource(id = R.string.find_best_recipes_onboarding),
                 transitionSpec = {
                     fadeIn().togetherWith(fadeOut())
                 }, label = ""

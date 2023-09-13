@@ -41,17 +41,21 @@ import me.elrevin.core_ui.theme.White
 import me.elrevin.core_ui.ui.AppPrimaryLargeButton
 import me.elrevin.core_ui.ui.AppSecondarySmallButton
 import me.elrevin.core_ui.ui.AppTextField
+import me.elrevin.user_account_presentation.common.ErrorText
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun RegisterScreen(
-    vm: RegisterScreenVM = hiltViewModel(),
+    state: RegisterScreenState,
+    onNameChange: (String) -> Unit,
+    onLoginChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onRegisterButtonClick: () -> Unit,
+    onSkipButtonClick: () -> Unit,
     onSuccessfulRegister: () -> Unit,
     onAuth: () -> Unit,
     onSkip: () -> Unit,
 ) {
-    val state = vm.state
-
     LaunchedEffect(key1 = state.registerSuccessful, block = {
         if (state.registerSuccessful) {
             onSuccessfulRegister()
@@ -109,7 +113,7 @@ fun RegisterScreen(
                         focusManager.moveFocus(FocusDirection.Down)
                     }
                 ),
-                onValueChange = { vm.onEvent(RegisterScreenEvent.OnNameChange(it)) }
+                onValueChange = onNameChange
             )
 
             Spacer(modifier = Modifier.height(18.dp))
@@ -125,7 +129,7 @@ fun RegisterScreen(
                         focusManager.moveFocus(FocusDirection.Down)
                     }
                 ),
-                onValueChange = { vm.onEvent(RegisterScreenEvent.OnLoginChange(it)) }
+                onValueChange = onLoginChange
             )
 
             Spacer(modifier = Modifier.height(18.dp))
@@ -143,10 +147,10 @@ fun RegisterScreen(
                 keyboardActions = KeyboardActions(
                     onDone = {
                         keyboardController?.hide()
-                        vm.onEvent(RegisterScreenEvent.OnRegisterButtonClick)
+                        onRegisterButtonClick()
                     }
                 ),
-                onValueChange = { vm.onEvent(RegisterScreenEvent.OnPasswordChange(it)) }
+                onValueChange = onPasswordChange
             )
 
             Box(
@@ -163,19 +167,8 @@ fun RegisterScreen(
                     )
                 }
 
-                if (state.errorStr.isNotEmpty()) {
-                    Text(
-                        text = state.errorStr,
-                        style = AppTheme.typography.label,
-                        color = AppTheme.colors.error
-                    )
-                } else if (state.error != null) {
-                    Text(
-                        text = LocalContext.current.getString(state.error),
-                        style = AppTheme.typography.label,
-                        color = AppTheme.colors.error
-                    )
-
+                if (state.error != null) {
+                    ErrorText(code = state.error)
                 }
             }
 
@@ -186,7 +179,7 @@ fun RegisterScreen(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = CoreUiRes.string.create_an_account),
                 iconPainter = AppTheme.icons.arrowRight,
-                onClick = { vm.onEvent(RegisterScreenEvent.OnRegisterButtonClick) }
+                onClick = onRegisterButtonClick
             )
 
             Spacer(modifier = Modifier.height(28.dp))
@@ -197,9 +190,7 @@ fun RegisterScreen(
             ) {
                 AppSecondarySmallButton(
                     text = stringResource(id = CoreUiRes.string.skip),
-                    onClick = {
-                        vm.onEvent(RegisterScreenEvent.OnSkipButtonClick)
-                    }
+                    onClick = onSkipButtonClick
                 )
 
                 AppSecondarySmallButton(

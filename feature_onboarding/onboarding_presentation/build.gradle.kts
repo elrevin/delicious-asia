@@ -42,9 +42,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core"))
-    implementation(project(":core_ui"))
-    implementation(project(":feature_user_account:user_account_domain"))
+    implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
+    implementation(project(Modules.UserAccount.domain))
 
     implementation(Dependecies.Other.core)
     implementation(Dependecies.Other.appcompat)

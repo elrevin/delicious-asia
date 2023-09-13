@@ -9,4 +9,23 @@
     <string name="name">Name</string>
     <string name="create_an_account">Create an account</string>
     <string name="sign_in">Login</string>
+    <string name="trending_now">Trending now 🔥</string>
+    <string name="all_recipes">All recipes</string>
+    <string name="find_best_recipes_header">Find the best recipes from\nthe Central Asia</string>
+    <string name="app_maybe_more_useful">The app maybe more useful \nif you are logged in:</string>
+    <string name="find_best_recipes_onboarding">Find the best recipes from\nthe Central Asian nations</string>
+    <string name="delicious_asia">Delicious\nAsia</string>
+    <string name="rating">Rating</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="cuisine">cuisine</string>
+    <string name="Cuisine">Cuisine</string>
+    <string name="time">Time</string>
+    <string name="mins">Mins</string>
+    <string name="popular_category">Popular category</string>
+    <string name="view_all">View all</string>
+    <string name="error11">Name is required.</string>
+    <string name="error12">Login is required and must be longer then 4 symbols.</string>
+    <string name="error13">This login is already used.</string>
+    <string name="error14">Password is required and must be longer then 5 symbols.</string>
+    <string name="error15">Something haf been broken on the server.</string>
 </resources>

@@ -12,10 +12,12 @@ fun AppPrimarySmallButton(
     modifier: Modifier = Modifier,
     text: String,
     iconPainter: Painter? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     BasePrimaryButton(
         modifier = modifier,
+        enabled = enabled,
         text = text,
         iconPainter = iconPainter,
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),

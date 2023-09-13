@@ -1,0 +1,7 @@
+query GetRecipes($lang: String!, $token: String!, $favorites: Boolean!, $categories: [Int], $page: Int, $pageSize: Int) {
+    recipes (lang: $lang, token: $token, favorites: $favorites, categories: $categories, page: $page, pageSize: $pageSize) {
+        items {
+            ...RecipeFragment
+        }
+    }
+}

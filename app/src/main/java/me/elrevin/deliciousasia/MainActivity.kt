@@ -3,7 +3,14 @@ package me.elrevin.deliciousasia
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.union
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
@@ -26,11 +33,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             DeliciousAsiaTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .windowInsetsPadding(WindowInsets.navigationBars.union(WindowInsets.ime)),
                     color = AppTheme.colors.surface
                 ) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = Routes.onboardingRoot.path) {
+                    NavHost(
+                        navController = navController,
+                        startDestination = Routes.onboardingRoot.path
+                    ) {
                         onboardingNavGraph(navController = navController)
                         userAccountNavigation(navController = navController)
                         recipesNavigation(navController = navController)

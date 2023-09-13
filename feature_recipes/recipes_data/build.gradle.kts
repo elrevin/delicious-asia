@@ -44,8 +44,15 @@ android {
 dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.Recipes.domain))
+    implementation(project(Modules.UserAccount.domain))
+
     implementation(project(Modules.apiSchema))
     apolloMetadata(project(Modules.apiSchema))
+
+    implementation(Dependecies.Room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(Dependecies.Room.compiler)
+    implementation(Dependecies.Room.ktx)
 
     implementation(Dependecies.Other.core)
     implementation(Dependecies.Other.appcompat)

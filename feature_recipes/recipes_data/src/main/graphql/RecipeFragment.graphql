@@ -1,0 +1,41 @@
+fragment RecipeFragment on Recipe {
+    id
+    name
+    duration
+    rate
+    viewsCount,
+    favorite
+    cuisine{
+        id
+        name
+    }
+    mainPhoto
+    author{
+        id
+        name
+        avatar
+    }
+    categories {
+        ...CategoryFragment
+    }
+    ingredients{
+        id
+        name
+        icon
+        optional
+        amount
+        unit
+        constantAmount
+        toTaste
+    }
+    stages{
+        id
+        name
+        steps{
+            ...StepFragment
+        }
+    }
+    steps{
+        ...StepFragment
+    }
+}

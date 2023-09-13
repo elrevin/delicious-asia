@@ -12,12 +12,14 @@ fun AppSecondarySmallButton(
     modifier: Modifier = Modifier,
     text: String,
     iconPainter: Painter? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     BaseSecondaryButton(
         modifier = modifier,
         text = text,
         iconPainter = iconPainter,
+        enabled = enabled,
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         textStyle = AppTheme.typography.labelBold,
         onClick = onClick

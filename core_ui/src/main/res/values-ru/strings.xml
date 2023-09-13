@@ -9,4 +9,23 @@
     <string name="name">Имя</string>
     <string name="create_an_account">Зарегистрироваться</string>
     <string name="sign_in">Войти</string>
+    <string name="trending_now">Популярные 🔥</string>
+    <string name="all_recipes">Все рецепты</string>
+    <string name="find_best_recipes_header">Найдите лучшие рецепты из\nцентральной азии</string>
+    <string name="app_maybe_more_useful">Приложение гораздо полезнее\nесли войти в свой аккаунт</string>
+    <string name="find_best_recipes_onboarding">Найдите лучшие рецепты \nнародов центральной азии</string>
+    <string name="delicious_asia">Вкусная\nАзия</string>
+    <string name="rating">Рейтинг</string>
+    <string name="add_to_favorites">Добавить в избранное</string>
+    <string name="cuisine">кухня</string>
+    <string name="Cuisine">Кухня</string>
+    <string name="time">Время</string>
+    <string name="mins">мин.</string>
+    <string name="popular_category">Популярные категории</string>
+    <string name="view_all">Все</string>
+    <string name="error11">Не заполнено обязательное поле Имя.</string>
+    <string name="error12">Логин обязательный и должен быть длиннее 4 символов.</string>
+    <string name="error13">Этот логин уже занят.</string>
+    <string name="error14">Пароль обязательный и должен быть длиннее 5 символов</string>
+    <string name="error15">На сервере что-то сломалось.</string>
 </resources>

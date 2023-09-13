@@ -1,0 +1,5 @@
+fragment StepFragment on Step {
+    id
+    photo
+    description
+}

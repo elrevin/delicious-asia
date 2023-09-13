@@ -57,5 +57,6 @@ apollo {
         packageName.set("me.elrevin.api_schema")
         generateOptionalOperationVariables.set(false)
         generateApolloMetadata.set(true)
+        alwaysGenerateTypesMatching.set(listOf("Query", "Mutation"))
     }
 }

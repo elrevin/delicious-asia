@@ -28,6 +28,13 @@ object AppTypography {
         lineHeight = 32.sp
     )
 
+    val h5Bold = TextStyle(
+        fontFamily = appFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        lineHeight = 28.sp
+    )
+
     val body = TextStyle(
         fontFamily = appFamily,
         fontWeight = FontWeight.Normal,
@@ -53,6 +60,20 @@ object AppTypography {
         fontFamily = appFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
-        lineHeight = 14.sp
+        lineHeight = 20.sp
+    )
+
+    val small = TextStyle(
+        fontFamily = appFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 12.sp
+    )
+
+    val smallBold = TextStyle(
+        fontFamily = appFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+        lineHeight = 12.sp
     )
 }

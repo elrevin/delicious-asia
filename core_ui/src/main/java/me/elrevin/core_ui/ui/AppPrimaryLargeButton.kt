@@ -12,10 +12,12 @@ fun AppPrimaryLargeButton(
     modifier: Modifier = Modifier,
     text: String,
     iconPainter: Painter? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     BasePrimaryButton(
         modifier = modifier,
+        enabled = enabled,
         text = text,
         iconPainter = iconPainter,
         contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),

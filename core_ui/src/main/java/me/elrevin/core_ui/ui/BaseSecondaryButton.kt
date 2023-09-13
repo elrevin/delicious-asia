@@ -36,9 +36,11 @@ fun BaseSecondaryButton(
     }
 
     Button(
+        modifier = modifier,
         border = BorderStroke(1.dp, borderColor),
         onClick = onClick,
         shape = AppTheme.shapes.medium,
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = AppTheme.colors.buttonSecondaryBg,
             contentColor = AppTheme.colors.buttonSecondaryText,

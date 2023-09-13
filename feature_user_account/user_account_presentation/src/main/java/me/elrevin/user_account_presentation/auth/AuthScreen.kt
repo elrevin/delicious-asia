@@ -42,18 +42,21 @@ import me.elrevin.core_ui.theme.White
 import me.elrevin.core_ui.ui.AppPrimaryLargeButton
 import me.elrevin.core_ui.ui.AppSecondarySmallButton
 import me.elrevin.core_ui.ui.AppTextField
+import me.elrevin.user_account_presentation.common.ErrorText
 import me.elrevin.core_ui.R as CoreUiRes
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AuthScreen(
-    vm: AuthScreenVM = hiltViewModel(),
+    state: AuthScreenState,
+    onLoginChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onAuthButtonClick: () -> Unit,
+    onSkipButtonClick: () -> Unit,
     onSuccessfulAuth: () -> Unit,
     onRegister: () -> Unit,
     onSkip: () -> Unit,
 ) {
-    val state = vm.state
-
     LaunchedEffect(key1 = state.authSuccessful, block = {
         if (state.authSuccessful) {
             onSuccessfulAuth()
@@ -110,7 +113,7 @@ fun AuthScreen(
                         focusManager.moveFocus(FocusDirection.Down)
                     }
                 ),
-                onValueChange = { vm.onEvent(AuthScreenEvent.OnLoginChange(it)) }
+                onValueChange = onLoginChange
             )
 
             Spacer(modifier = Modifier.height(18.dp))
@@ -128,10 +131,10 @@ fun AuthScreen(
                 keyboardActions = KeyboardActions(
                     onDone = {
                         keyboardController?.hide()
-                        vm.onEvent(AuthScreenEvent.OnAuthButtonClick)
+                        onAuthButtonClick()
                     }
                 ),
-                onValueChange = { vm.onEvent(AuthScreenEvent.OnPasswordChange(it)) }
+                onValueChange = onPasswordChange
             )
 
             Box(
@@ -148,19 +151,8 @@ fun AuthScreen(
                     )
                 }
 
-                if (state.errorStr.isNotEmpty()) {
-                    Text(
-                        text = state.errorStr,
-                        style = AppTheme.typography.label,
-                        color = AppTheme.colors.error
-                    )
-                } else if (state.error != null) {
-                    Text(
-                        text = LocalContext.current.getString(state.error),
-                        style = AppTheme.typography.label,
-                        color = AppTheme.colors.error
-                    )
-
+                if (state.error != null) {
+                    ErrorText(code = state.error)
                 }
             }
 
@@ -171,7 +163,7 @@ fun AuthScreen(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = CoreUiRes.string.start_cooking),
                 iconPainter = AppTheme.icons.arrowRight,
-                onClick = { vm.onEvent(AuthScreenEvent.OnAuthButtonClick) }
+                onClick = onAuthButtonClick
             )
 
             Spacer(modifier = Modifier.height(28.dp))
@@ -182,9 +174,7 @@ fun AuthScreen(
             ) {
                 AppSecondarySmallButton(
                     text = stringResource(id = CoreUiRes.string.skip),
-                    onClick = {
-                        vm.onEvent(AuthScreenEvent.OnSkipButtonClick)
-                    }
+                    onClick = onSkipButtonClick
                 )
 
                 AppSecondarySmallButton(

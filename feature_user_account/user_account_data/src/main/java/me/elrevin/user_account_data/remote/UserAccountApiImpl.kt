@@ -23,7 +23,7 @@ class UserAccountApiImpl @Inject constructor(
             ).execute().dataAssertNoErrors
 
             if (response.registerUser?.onError != null) {
-                return Either.failure(response.registerUser.onError.errorMessage)
+                return Either.failure(response.registerUser.onError.errorCode)
             }
 
             val userData = response.registerUser!!.onUserData!!
@@ -76,7 +76,7 @@ class UserAccountApiImpl @Inject constructor(
             ).execute().dataAssertNoErrors
 
             if (response.auth?.onError != null) {
-                return Either.failure(response.auth.onError.errorMessage)
+                return Either.failure(response.auth.onError.errorCode)
             }
 
             val userData = response.auth!!.onUserData!!

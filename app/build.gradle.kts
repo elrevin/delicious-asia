@@ -62,6 +62,8 @@ dependencies {
     implementation(project(Modules.UserAccount.data))
     implementation(project(Modules.UserAccount.domain))
     implementation(project(Modules.UserAccount.presentation))
+    implementation(project(Modules.Recipes.data))
+    implementation(project(Modules.Recipes.domain))
     implementation(project(Modules.Recipes.presentation))
 
     implementation(Dependecies.Other.core)

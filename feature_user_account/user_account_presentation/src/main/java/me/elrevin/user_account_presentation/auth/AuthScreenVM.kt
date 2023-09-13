@@ -45,8 +45,7 @@ class AuthScreenVM @Inject constructor(
             withContext(Dispatchers.IO) {
                 state = state.copy(
                     progressVisible = true,
-                    error = null,
-                    errorStr = ""
+                    error = null
                 )
                 val res = useCases.auth(state.login, state.password)
                 state = state.copy(progressVisible = false)
@@ -55,9 +54,9 @@ class AuthScreenVM @Inject constructor(
                     res.isSuccess() -> {
                         state = state.copy(authSuccessful = true)
                     }
-                    res.isFailure() -> state = state.copy(errorStr = res.getFailureMessageOrNull()!!)
+                    res.isFailure() -> state = state.copy(error = res.getFailureCodeOrNull()!!)
                     res.isException() -> state =
-                        state.copy(error = CoreUiRes.string.api_exception)
+                        state.copy(error = 1)
                 }
             }
         }

@@ -24,12 +24,14 @@ fun BasePrimaryButton(
     iconPainter: Painter? = null,
     contentPadding: PaddingValues,
     textStyle: TextStyle,
+    enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
     Button(
         modifier = modifier,
         onClick = onClick,
         shape = AppTheme.shapes.medium,
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = AppTheme.colors.buttonPrimaryBg,
             contentColor = AppTheme.colors.buttonPrimaryText

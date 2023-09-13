@@ -18,4 +18,10 @@ object Icons {
     val badge: Painter
         @Composable
         get() = painterResource(id = R.drawable.ic_user_badge)
+    val star: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_star)
+    val bookmark: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_bookmark)
 }

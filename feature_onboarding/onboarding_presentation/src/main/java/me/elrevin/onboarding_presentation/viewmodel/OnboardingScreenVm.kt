@@ -36,11 +36,11 @@ class OnboardingScreenVm  @Inject constructor(
             }
 
             if (result.isFailure()) {
-                state = state.copy(errorStr = result.getFailureMessageOrNull()!!)
+                state = state.copy(error = result.getFailureCodeOrNull()!!)
             }
 
             if (result.isException()) {
-                state = state.copy(errorId = CoreUiRes.string.api_exception)
+                state = state.copy(error = 1)
             }
         }
     }
@@ -52,8 +52,7 @@ class OnboardingScreenVm  @Inject constructor(
 
 data class OnboardingClassState (
     val loading: Boolean = false,
-    val errorId: Int? = null,
-    val errorStr: String = "",
+    val error: Int? = null,
     val authorizedOrSkipped: Boolean = false,
     val unAuthorized: Boolean = false,
 )
