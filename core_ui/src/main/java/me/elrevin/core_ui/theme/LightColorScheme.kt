@@ -57,4 +57,6 @@ fun lightAppColorScheme() = AppColorScheme(
     tabActiveBackground = Red50,
     tabDefaultText = Red30,
     tabActiveText = White,
+    shimmerColor1 = Neutral10,
+    shimmerColor2 = Neutral20,
 )

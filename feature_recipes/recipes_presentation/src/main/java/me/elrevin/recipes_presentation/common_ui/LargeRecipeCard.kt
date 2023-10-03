@@ -13,9 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,12 +26,17 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.elrevin.core_ui.R as CoreUiRes
 import me.elrevin.core_ui.theme.AppTheme
+import me.elrevin.core_ui.theme.Neutral10
+import me.elrevin.core_ui.theme.Neutral20
+import me.elrevin.core_ui.theme.Neutral30
+import me.elrevin.core_ui.theme.Neutral40
 import me.elrevin.core_ui.theme.Neutral70
 import me.elrevin.core_ui.theme.Neutral80
 import me.elrevin.core_ui.theme.White
 import me.elrevin.core_ui.ui.TextBodyBold
 import me.elrevin.core_ui.ui.TextLabelBold
 import me.elrevin.core_ui.ui.TextSmall
+import me.elrevin.core_ui.utils.radialShimmerEffect
 import me.elrevin.recipes_domain.entity.Recipe
 
 /**
@@ -46,7 +49,7 @@ import me.elrevin.recipes_domain.entity.Recipe
 @Composable
 fun LargeRecipeCard(
     width: Dp? = 280.dp,
-    recipe: Recipe,
+    recipe: Recipe?,
     onAddToFavorites: () -> Unit
 ) {
     val modifier: Modifier = if (width != null) {
@@ -58,30 +61,80 @@ fun LargeRecipeCard(
     Column(
         modifier = modifier
     ) {
-        MainPhotoBlock(recipe = recipe, onAddToFavorites)
-        TextBodyBold(
-            text = recipe.name,
+        if (recipe != null) {
+            RecipeCard(recipe = recipe, onAddToFavorites = onAddToFavorites)
+        } else {
+            LoadingCard()
+        }
+    }
+}
+
+@Composable
+private fun LoadingCard() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(180.dp)
+            .clip(AppTheme.shapes.large)
+            .radialShimmerEffect(AppTheme.colors.shimmerColor1, AppTheme.colors.shimmerColor2)
+    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp, bottom = 8.dp)
+            .radialShimmerEffect(AppTheme.colors.shimmerColor1, AppTheme.colors.shimmerColor2),
+    )
+
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 12.dp, bottom = 8.dp),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+                .size(32.dp)
+                .clip(RoundedCornerShape(50))
+                .radialShimmerEffect(AppTheme.colors.shimmerColor1, AppTheme.colors.shimmerColor2)
         )
 
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            AsyncImage(
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(RoundedCornerShape(50)),
-                model = recipe.author.avatar,
-                contentScale = ContentScale.Crop,
-                contentDescription = recipe.author.name,
-            )
-            TextSmall(text = recipe.author.name, color = AppTheme.colors.onBackgroundSecond)
-        }
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .height(15.dp)
+                .clip(AppTheme.shapes.small)
+                .radialShimmerEffect(AppTheme.colors.shimmerColor1, AppTheme.colors.shimmerColor2)
+        )
+    }
+}
+
+@Composable
+private fun RecipeCard(
+    recipe: Recipe,
+    onAddToFavorites: () -> Unit
+) {
+    MainPhotoBlock(recipe = recipe, onAddToFavorites)
+    TextBodyBold(
+        text = recipe.name,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp, bottom = 8.dp),
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
+    )
+
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AsyncImage(
+            modifier = Modifier
+                .size(32.dp)
+                .clip(RoundedCornerShape(50)),
+            model = recipe.author.avatar,
+            contentScale = ContentScale.Crop,
+            contentDescription = recipe.author.name,
+        )
+        TextSmall(text = recipe.author.name, color = AppTheme.colors.onBackgroundSecond)
     }
 }
 
@@ -142,7 +195,7 @@ private fun MainPhotoBlock(
                         .size(32.dp)
                         .clip(RoundedCornerShape(50))
                         .background(color = White)
-                        .clickable{
+                        .clickable {
                             onAddToFavorites()
                         },
                     contentAlignment = Alignment.Center,

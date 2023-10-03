@@ -57,4 +57,6 @@ fun darkAppColorScheme() = AppColorScheme(
     tabActiveBackground = Red50,
     tabDefaultText = Red50,
     tabActiveText = Neutral20,
+    shimmerColor1 = Neutral80,
+    shimmerColor2 = Neutral70,
 )

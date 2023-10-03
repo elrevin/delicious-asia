@@ -65,8 +65,7 @@ internal fun HomeScreen(
             )
 
             TrendingRecipesList(
-                trends = state.trends,
-                loadingTrends = state.showLoadingTrendsProgress
+                trends = state.trends
             )
 
             PopularCategories(

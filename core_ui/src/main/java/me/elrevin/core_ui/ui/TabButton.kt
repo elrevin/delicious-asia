@@ -3,6 +3,7 @@ package me.elrevin.core_ui.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +27,7 @@ fun TabButton(
         modifier = modifier
             .then(
                 Modifier
+                    .height(34.dp)
                     .clip(AppTheme.shapes.medium)
                     .background(background)
                     .padding(horizontal = 12.dp, vertical = 8.dp)

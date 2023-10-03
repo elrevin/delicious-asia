@@ -23,9 +23,9 @@ import me.elrevin.recipes_presentation.common_ui.SmallRecipeCard
 
 @Composable
 internal fun PopularCategories(
-    categories: List<Category>,
+    categories: List<Category?>,
     activeCategory: Int,
-    recipes: List<Recipe>,
+    recipes: List<Recipe?>,
     onCategoryChange: (Int) -> Unit,
     onViewAll: () -> Unit,
 ) {
@@ -53,7 +53,7 @@ internal fun PopularCategories(
 
         TabLazyRow(
             modifier = Modifier.padding(bottom = 20.dp),
-            list = categories.map { Pair(it.id, it.name) },
+            list = categories.map { if (it != null) Pair(it.id, it.name) else null },
             activeTag = activeCategory,
             onTabClick = { onCategoryChange(it as Int) }
         )

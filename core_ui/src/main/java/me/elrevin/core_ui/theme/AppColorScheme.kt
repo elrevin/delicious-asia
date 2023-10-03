@@ -60,6 +60,8 @@ data class AppColorScheme(
     val tabActiveBackground: Color,
     val tabDefaultText: Color,
     val tabActiveText: Color,
+    val shimmerColor1: Color,
+    val shimmerColor2: Color,
 
 )
 
@@ -120,5 +122,7 @@ val localAppColors = staticCompositionLocalOf {
         tabActiveBackground = Color.Unspecified,
         tabDefaultText = Color.Unspecified,
         tabActiveText = Color.Unspecified,
+        shimmerColor1 = Color.Unspecified,
+        shimmerColor2 = Color.Unspecified,
     )
 }

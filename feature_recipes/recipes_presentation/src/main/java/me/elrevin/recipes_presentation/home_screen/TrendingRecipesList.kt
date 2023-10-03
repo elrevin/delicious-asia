@@ -21,8 +21,7 @@ import me.elrevin.recipes_presentation.common_ui.LargeRecipeCard
 
 @Composable
 fun TrendingRecipesList(
-    loadingTrends: Boolean,
-    trends: List<Recipe>
+    trends: List<Recipe?>
 ) {
     Column (
         modifier = Modifier
